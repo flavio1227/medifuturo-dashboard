@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { Activity } from "lucide-react";
+import { withBasePath } from "@/lib/base-path";
 
 export default function Header() {
   return (
@@ -9,14 +9,15 @@ export default function Header() {
       {/* Franja institucional de logos */}
       <div className="rounded-2xl border border-slate-200/80 bg-white px-3 py-4 shadow-sm sm:px-5 sm:py-5 md:px-6">
         <div className="flex flex-col items-center gap-4 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
-          <div className="w-full max-w-3xl">
-            <Image
-              src="/logos/alianza-sps-medifutur.png"
+          <div className="flex w-full max-w-4xl items-center justify-center">
+            {/* img nativo: respeta basePath de GitHub Pages de forma fiable */}
+            <img
+              src={withBasePath("/logos/alianza-sps-medifutur.png")}
               alt="Municipalidad de San Pedro Sula · Droguería Medifutur"
+              className="h-auto w-full max-h-28 object-contain object-center sm:max-h-32 md:max-h-40"
               width={1200}
               height={280}
-              className="h-auto w-full object-contain"
-              priority
+              decoding="async"
             />
           </div>
           <div className="hidden shrink-0 border-l border-slate-200 pl-6 text-right lg:block">
