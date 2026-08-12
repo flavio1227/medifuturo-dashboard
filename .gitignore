@@ -9,9 +9,14 @@
 # next.js
 /.next/
 /out/
+/dist/
 
 # production
 /build
+
+# tooling
+/.cursor/
+/graphify-out/
 
 # misc
 .DS_Store

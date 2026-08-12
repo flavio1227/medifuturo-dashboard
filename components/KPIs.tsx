@@ -1,6 +1,6 @@
 "use client";
 
-import { Users, TrendingUp, PiggyBank, BarChart3 } from "lucide-react";
+import { Users, Landmark, PiggyBank, BarChart3 } from "lucide-react";
 import { kpis } from "@/data/dashboard-data";
 import { formatMoney, formatNumber } from "@/lib/utils";
 
@@ -11,54 +11,69 @@ export default function KPIs() {
       value: formatNumber(kpis.total_pacientes),
       sub: "Casos documentados",
       icon: Users,
-      color: "text-emerald-600",
-      bg: "bg-emerald-50",
+      accent: "border-sky-200 bg-sky-50 text-sky-700",
+      valueClass: "text-sky-800",
+      highlight: false,
     },
     {
-      title: "Inversión Medifuturo",
+      title: "Inversión Alcaldía Municipal",
       value: formatMoney(kpis.total_inversion),
-      sub: "Total invertido",
-      icon: TrendingUp,
-      color: "text-blue-600",
-      bg: "bg-blue-50",
+      sub: "Recursos municipales asignados",
+      icon: Landmark,
+      accent: "border-slate-200 bg-slate-50 text-slate-600",
+      valueClass: "text-slate-800",
+      highlight: false,
     },
     {
-      title: "Ahorro Neto",
+      title: "Ahorro Neto del Estado",
       value: formatMoney(kpis.total_ahorro_neto),
-      sub: "vs. costo estado",
+      sub: "Vs. costo habitual del Estado",
       icon: PiggyBank,
-      color: "text-emerald-600",
-      bg: "bg-emerald-50",
+      accent: "border-emerald-300 bg-emerald-50 text-emerald-700",
+      valueClass: "text-emerald-700",
+      highlight: true,
     },
     {
       title: "ROI Promedio",
       value: `${kpis.promedio_roi}x`,
-      sub: "Retorno por caso",
+      sub: "Retorno por cada lempira",
       icon: BarChart3,
-      color: "text-amber-600",
-      bg: "bg-amber-50",
+      accent: "border-amber-200 bg-amber-50 text-amber-700",
+      valueClass: "text-amber-700",
+      highlight: false,
     },
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+    <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:mb-8 xl:grid-cols-4">
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-white rounded-xl p-5 shadow-sm border border-slate-200 hover:shadow-md transition-shadow"
+          className={`relative overflow-hidden rounded-2xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5 ${
+            card.highlight
+              ? "border-emerald-300 ring-2 ring-emerald-100 sm:col-span-2 xl:col-span-1"
+              : "border-slate-200/80"
+          }`}
         >
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+          {card.highlight && (
+            <span className="absolute right-3 top-3 rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+              Clave
+            </span>
+          )}
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
                 {card.title}
               </p>
-              <p className={`text-2xl font-bold mt-1 ${card.color}`}>
+              <p
+                className={`mt-2 break-words text-xl font-bold leading-tight sm:text-2xl ${card.valueClass}`}
+              >
                 {card.value}
               </p>
-              <p className="text-xs text-slate-400 mt-1">{card.sub}</p>
+              <p className="mt-1.5 text-xs text-slate-400">{card.sub}</p>
             </div>
-            <div className={`p-3 rounded-lg ${card.bg}`}>
-              <card.icon className={`w-6 h-6 ${card.color}`} />
+            <div className={`shrink-0 rounded-xl border p-2.5 ${card.accent}`}>
+              <card.icon className="h-5 w-5" />
             </div>
           </div>
         </div>
