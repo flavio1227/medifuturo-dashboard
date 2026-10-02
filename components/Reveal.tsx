@@ -17,7 +17,8 @@ export default function Reveal({
   variant = "slide-up",
   delayMs = 0,
 }: RevealProps) {
-  const { ref, inView } = useInView<HTMLDivElement>();
+  // once:false → al salir y volver a entrar se re-aplica fade/slide
+  const { ref, inView } = useInView<HTMLDivElement>({ once: false, threshold: 0.2 });
 
   const style = {
     transitionDelay: `${delayMs}ms`,

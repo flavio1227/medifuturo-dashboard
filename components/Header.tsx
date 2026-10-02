@@ -18,7 +18,7 @@ export default function Header() {
             <img
               src={withBasePath("/logos/secretaria-de-salud.png")}
               alt="Gobierno de la República · Secretaría de Salud"
-              className="h-full w-auto max-w-full object-contain"
+              className="animate-soft-float h-full w-auto max-w-full object-contain"
               width={300}
               height={300}
               decoding="async"
@@ -32,9 +32,10 @@ export default function Header() {
 
           <div className="flex h-full min-w-0 flex-1 items-center justify-center">
             <img
-              src={withBasePath("/logos/medifuturo-logo.jpeg")}
+              src={`${withBasePath("/logos/medifuturo-logo.jpeg")}?v=crop3`}
               alt="Droguería Medifuturo"
-              className="h-full w-auto max-w-full object-contain"
+              className="animate-soft-float h-full w-auto max-w-full object-contain"
+              style={{ animationDelay: "0.45s" }}
               width={320}
               height={180}
               decoding="async"

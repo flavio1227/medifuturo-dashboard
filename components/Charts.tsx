@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -79,12 +79,21 @@ function ActivePieShape(props: any) {
 }
 
 export default function Charts() {
-  const bars = useInView({ threshold: 0.2 });
-  const pie = useInView({ threshold: 0.2 });
+  const bars = useInView({ threshold: 0.2, once: false });
+  const pie = useInView({ threshold: 0.2, once: false });
   const [metric, setMetric] = useState<Metric>("ambos");
   const [barKey, setBarKey] = useState(0);
   const [pieKey, setPieKey] = useState(0);
   const [activePie, setActivePie] = useState<number | undefined>(0);
+
+  // Re-anima barras/pastel cada vez que la sección vuelve a verse
+  useEffect(() => {
+    if (bars.inView) setBarKey((k) => k + 1);
+  }, [bars.inView]);
+
+  useEffect(() => {
+    if (pie.inView) setPieKey((k) => k + 1);
+  }, [pie.inView]);
 
   const barData = useMemo(() => porEspecialidad, []);
 

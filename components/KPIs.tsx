@@ -68,7 +68,7 @@ export default function KPIs() {
                 : "border-slate-200/80"
             }`}
           >
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-teal-500 to-emerald-400 transition-transform duration-500 group-hover:scale-x-100" />
+            <div className="animate-shimmer-bar pointer-events-none absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-teal-500 to-emerald-400" />
             {card.highlight && (
               <span className="absolute right-3 top-3 rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
                 Clave

@@ -105,6 +105,55 @@ html {
   animation: savings-glow 2.8s ease-in-out infinite;
 }
 
+/* Ambient / looping motion (agradable, no invasivo) */
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes soft-pulse-ring {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.18);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(13, 148, 136, 0);
+  }
+}
+
+@keyframes shimmer-bar {
+  0% {
+    transform: scaleX(0.35);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.35);
+    opacity: 0.35;
+  }
+}
+
+.animate-soft-float {
+  animation: soft-float 3.6s ease-in-out infinite;
+}
+
+.animate-soft-pulse-ring {
+  animation: soft-pulse-ring 2.8s ease-out infinite;
+}
+
+.animate-shimmer-bar {
+  transform-origin: left center;
+  animation: shimmer-bar 2.8s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-visible {
@@ -113,7 +162,10 @@ html {
     transition: none !important;
   }
 
-  .animate-savings-glow {
+  .animate-savings-glow,
+  .animate-soft-float,
+  .animate-soft-pulse-ring,
+  .animate-shimmer-bar {
     animation: none !important;
   }
 }

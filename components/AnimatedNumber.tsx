@@ -17,7 +17,7 @@ export default function AnimatedNumber({
   className,
   durationMs = 1300,
 }: Props) {
-  const { ref, inView } = useInView({ threshold: 0.4 });
+  const { ref, inView } = useInView({ threshold: 0.35, once: false });
   const current = useCountUp(value, inView, durationMs);
 
   let text = formatNumber(Math.round(current));
