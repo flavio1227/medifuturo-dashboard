@@ -142,9 +142,6 @@ export default function PresentationMode() {
         >
           <Presentation className="h-4 w-4 transition group-hover:rotate-[-8deg]" />
           Presentación
-          <span className="hidden rounded-full bg-white/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider sm:inline">
-            Épica
-          </span>
         </button>
       )}
 
