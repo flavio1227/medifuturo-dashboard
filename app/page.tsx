@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import SectionNav from "@/components/SectionNav";
 import SavingsHero from "@/components/SavingsHero";
 import KPIs from "@/components/KPIs";
 import Charts from "@/components/Charts";
@@ -11,6 +12,7 @@ export default function Home() {
     <main className="min-h-screen px-3 py-4 sm:px-4 sm:py-6 md:px-6 md:py-8 lg:px-8">
       <div className="mx-auto w-full max-w-7xl">
         <Header />
+        <SectionNav />
         <SavingsHero />
         <KPIs />
         <Charts />
@@ -22,7 +24,7 @@ export default function Home() {
           <p className="font-medium text-slate-600">
             Secretaría de Salud · Droguería Medifuturo
           </p>
-          <p className="mt-1 mx-auto max-w-xl leading-relaxed">
+          <p className="mx-auto mt-1 max-w-xl leading-relaxed">
             Catálogo oficial de precios para el Fondo de Contingencia — precios
             fijos y transparentes para auditoría del Estado · Mayo 2026 · Red
             SESAL e IHSS

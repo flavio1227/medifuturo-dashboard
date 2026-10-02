@@ -1,9 +1,10 @@
 "use client";
 
 import { kpis } from "@/data/dashboard-data";
-import { formatMoney, formatNumber } from "@/lib/utils";
+import { formatNumber } from "@/lib/utils";
 import { Landmark, TrendingDown, Sparkles } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import AnimatedNumber from "@/components/AnimatedNumber";
 
 export default function SavingsHero() {
   const pctVsEstado =
@@ -11,8 +12,11 @@ export default function SavingsHero() {
     100;
 
   return (
-    <Reveal variant="slide-up" className="mb-6 md:mb-8">
-      <section className="overflow-hidden rounded-2xl bg-gradient-to-br from-teal-800 via-teal-700 to-sky-900 text-white shadow-lg">
+    <Reveal variant="slide-up" className="mb-6 scroll-mt-20 md:mb-8">
+      <section
+        id="ahorro"
+        className="overflow-hidden rounded-2xl bg-gradient-to-br from-teal-800 via-teal-700 to-sky-900 text-white shadow-lg"
+      >
         <div className="relative px-4 py-6 sm:px-6 sm:py-8 md:px-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/5 blur-2xl" />
           <div className="pointer-events-none absolute -bottom-20 left-1/3 h-48 w-48 rounded-full bg-emerald-400/10 blur-2xl" />
@@ -26,9 +30,12 @@ export default function SavingsHero() {
               <p className="text-sm font-medium text-teal-100/90">
                 Ahorro neto documentado
               </p>
-              <p className="animate-savings-glow mt-1 font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-                {formatMoney(kpis.total_ahorro_neto)}
-              </p>
+              <AnimatedNumber
+                value={kpis.total_ahorro_neto}
+                mode="money"
+                durationMs={1600}
+                className="animate-savings-glow mt-1 block font-display text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl"
+              />
               <p className="mt-3 flex items-start gap-2 text-sm text-teal-50/90">
                 <TrendingDown className="mt-0.5 h-4 w-4 shrink-0 text-emerald-300" />
                 <span>
@@ -43,30 +50,36 @@ export default function SavingsHero() {
             </div>
 
             <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-3 lg:w-auto lg:min-w-[22rem]">
-              <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.02]">
+              <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.03]">
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-teal-100/80">
                   Ahorro bruto
                 </p>
-                <p className="mt-1 text-lg font-bold sm:text-xl">
-                  {formatMoney(kpis.total_ahorro_bruto)}
-                </p>
+                <AnimatedNumber
+                  value={kpis.total_ahorro_bruto}
+                  mode="money"
+                  className="mt-1 block text-lg font-bold sm:text-xl"
+                />
               </div>
-              <div className="rounded-xl border border-emerald-300/30 bg-emerald-400/15 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.02]">
+              <div className="rounded-xl border border-emerald-300/30 bg-emerald-400/15 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.03]">
                 <p className="flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wider text-emerald-100">
                   <Sparkles className="h-3 w-3" />
                   Proyección anual
                 </p>
-                <p className="mt-1 text-lg font-bold text-emerald-50 sm:text-xl">
-                  {formatMoney(kpis.ahorro_proyectado_anual)}
-                </p>
+                <AnimatedNumber
+                  value={kpis.ahorro_proyectado_anual}
+                  mode="money"
+                  className="mt-1 block text-lg font-bold text-emerald-50 sm:text-xl"
+                />
               </div>
-              <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.02]">
+              <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur transition-transform duration-300 hover:scale-[1.03]">
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-teal-100/80">
                   ROI promedio
                 </p>
-                <p className="mt-1 text-lg font-bold sm:text-xl">
-                  {kpis.promedio_roi}x
-                </p>
+                <AnimatedNumber
+                  value={kpis.promedio_roi}
+                  mode="roi"
+                  className="mt-1 block text-lg font-bold sm:text-xl"
+                />
               </div>
             </div>
           </div>
