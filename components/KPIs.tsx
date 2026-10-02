@@ -50,10 +50,7 @@ export default function KPIs() {
   ];
 
   return (
-    <div
-      id="kpis"
-      className="reveal-stagger mb-6 scroll-mt-20 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:mb-8 xl:grid-cols-4"
-    >
+    <div className="reveal-stagger mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:mb-8 xl:grid-cols-4">
       {cards.map((card, i) => (
         <Reveal
           key={card.title}

@@ -12,11 +12,8 @@ export default function SavingsHero() {
     100;
 
   return (
-    <Reveal variant="slide-up" className="mb-6 scroll-mt-20 md:mb-8">
-      <section
-        id="ahorro"
-        className="animate-soft-pulse-ring overflow-hidden rounded-2xl bg-gradient-to-br from-teal-800 via-teal-700 to-sky-900 text-white shadow-lg"
-      >
+    <Reveal variant="slide-up" className="mb-6 md:mb-8">
+      <section className="animate-soft-pulse-ring overflow-hidden rounded-2xl bg-gradient-to-br from-teal-800 via-teal-700 to-sky-900 text-white shadow-lg">
         <div className="relative px-4 py-6 sm:px-6 sm:py-8 md:px-8">
           <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/5 blur-2xl" />
           <div className="pointer-events-none absolute -bottom-20 left-1/3 h-48 w-48 rounded-full bg-emerald-400/10 blur-2xl" />

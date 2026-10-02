@@ -86,7 +86,7 @@ export default function Charts() {
   const [pieKey, setPieKey] = useState(0);
   const [activePie, setActivePie] = useState<number | undefined>(0);
 
-  // Re-anima barras/pastel cada vez que la sección vuelve a verse
+  // Re-anima barras/pastel al volver a verse o en modo presentación
   useEffect(() => {
     if (bars.inView) setBarKey((k) => k + 1);
   }, [bars.inView]);
@@ -94,6 +94,18 @@ export default function Charts() {
   useEffect(() => {
     if (pie.inView) setPieKey((k) => k + 1);
   }, [pie.inView]);
+
+  useEffect(() => {
+    const onStep = (e: Event) => {
+      const id = (e as CustomEvent<{ id: string }>).detail?.id;
+      if (id === "graficos") {
+        setBarKey((k) => k + 1);
+        setPieKey((k) => k + 1);
+      }
+    };
+    window.addEventListener("presentation-step", onStep);
+    return () => window.removeEventListener("presentation-step", onStep);
+  }, []);
 
   const barData = useMemo(() => porEspecialidad, []);
 
@@ -104,10 +116,7 @@ export default function Charts() {
   ];
 
   return (
-    <div
-      id="graficos"
-      className="mb-6 scroll-mt-20 grid grid-cols-1 gap-4 md:mb-8 md:gap-6 lg:grid-cols-2"
-    >
+    <div className="mb-6 grid grid-cols-1 gap-4 md:mb-8 md:gap-6 lg:grid-cols-2">
       <Reveal variant="slide-left">
         <div
           ref={bars.ref}

@@ -154,6 +154,121 @@ html {
   animation: shimmer-bar 2.8s ease-in-out infinite;
 }
 
+/* ── Modo Presentación épica ── */
+body.presentation-active {
+  background: #0b1220;
+}
+
+body.presentation-active .present-veil {
+  animation: present-veil-in 0.45s ease-out both;
+  background: radial-gradient(
+    ellipse 70% 55% at 50% 45%,
+    transparent 0%,
+    rgba(2, 12, 24, 0.35) 55%,
+    rgba(2, 12, 24, 0.62) 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes present-veil-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.present-section {
+  position: relative;
+  transition:
+    opacity 0.55s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s ease,
+    box-shadow 0.7s ease;
+}
+
+body.presentation-active .present-dimmed {
+  opacity: 0.18;
+  filter: blur(1.5px) grayscale(0.25);
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+body.presentation-active .present-spotlight {
+  position: relative;
+  z-index: 45;
+  opacity: 1;
+  filter: none;
+  transform: scale(1.015);
+  pointer-events: auto;
+  animation: present-pop 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+body.presentation-active .present-spotlight > * {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.35),
+    0 25px 60px rgba(15, 23, 42, 0.35),
+    0 0 40px rgba(45, 212, 191, 0.18);
+  border-radius: 1.25rem;
+}
+
+@keyframes present-pop {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.94) translateY(18px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.03) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.015) translateY(0);
+  }
+}
+
+.present-intro-card {
+  animation: present-intro 2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes present-intro {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(24px);
+    filter: blur(8px);
+  }
+  35% {
+    opacity: 1;
+    transform: scale(1.02) translateY(0);
+    filter: blur(0);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.04);
+    filter: blur(4px);
+  }
+}
+
+.present-step-title {
+  animation: present-title-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes present-title-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-visible {
@@ -165,7 +280,10 @@ html {
   .animate-savings-glow,
   .animate-soft-float,
   .animate-soft-pulse-ring,
-  .animate-shimmer-bar {
+  .animate-shimmer-bar,
+  .present-intro-card,
+  .present-step-title,
+  body.presentation-active .present-spotlight {
     animation: none !important;
   }
 }

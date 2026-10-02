@@ -30,11 +30,8 @@ export default function PacientesTable() {
   const filters: Filter[] = ["Todos", "Ortopedia", "Neurocirugía"];
 
   return (
-    <Reveal variant="slide-up" className="mb-6 scroll-mt-20 md:mb-8">
-      <div
-        id="pacientes"
-        className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-5"
-      >
+    <Reveal variant="slide-up" className="mb-6 md:mb-8">
+      <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-sm font-semibold text-slate-800">
             Registro de Pacientes Operados

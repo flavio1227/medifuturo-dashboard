@@ -6,6 +6,8 @@ import Charts from "@/components/Charts";
 import PacientesTable from "@/components/PacientesTable";
 import Proyeccion from "@/components/Proyeccion";
 import Compromisos from "@/components/Compromisos";
+import PresentationMode from "@/components/PresentationMode";
+import PresentSection from "@/components/PresentSection";
 
 export default function Home() {
   return (
@@ -13,12 +15,30 @@ export default function Home() {
       <div className="mx-auto w-full max-w-7xl">
         <Header />
         <SectionNav />
-        <SavingsHero />
-        <KPIs />
-        <Charts />
-        <Proyeccion />
-        <PacientesTable />
-        <Compromisos />
+
+        <PresentSection id="ahorro">
+          <SavingsHero />
+        </PresentSection>
+
+        <PresentSection id="kpis">
+          <KPIs />
+        </PresentSection>
+
+        <PresentSection id="graficos">
+          <Charts />
+        </PresentSection>
+
+        <PresentSection id="proyeccion">
+          <Proyeccion />
+        </PresentSection>
+
+        <PresentSection id="pacientes">
+          <PacientesTable />
+        </PresentSection>
+
+        <PresentSection id="compromisos">
+          <Compromisos />
+        </PresentSection>
 
         <footer className="border-t border-slate-200/80 py-6 text-center text-xs text-slate-400">
           <p className="font-medium text-slate-600">
@@ -31,6 +51,8 @@ export default function Home() {
           </p>
         </footer>
       </div>
+
+      <PresentationMode />
     </main>
   );
 }
