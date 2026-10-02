@@ -3,6 +3,7 @@
 import { trimestral, kpis } from "@/data/dashboard-data";
 import { formatMoney, formatNumber } from "@/lib/utils";
 import { TrendingUp, Users, BedDouble } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 export default function Proyeccion() {
   const total9M = {
@@ -55,7 +56,8 @@ export default function Proyeccion() {
   const periods = ["T1", "T2", "T3", "9 meses", "Anual"];
 
   return (
-    <div className="mb-6 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm sm:p-5 md:mb-8">
+    <Reveal variant="slide-up" className="mb-6 md:mb-8">
+    <div className="rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-shadow duration-300 hover:shadow-md sm:p-5">
       <div className="mb-4 flex items-center gap-2">
         <TrendingUp className="h-5 w-5 text-clinical-700" />
         <h3 className="text-sm font-semibold text-slate-800">
@@ -248,5 +250,6 @@ export default function Proyeccion() {
         </table>
       </div>
     </div>
+    </Reveal>
   );
 }

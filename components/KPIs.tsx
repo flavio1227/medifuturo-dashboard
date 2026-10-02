@@ -3,6 +3,7 @@
 import { Users, Landmark, PiggyBank, BarChart3 } from "lucide-react";
 import { kpis } from "@/data/dashboard-data";
 import { formatMoney, formatNumber } from "@/lib/utils";
+import Reveal from "@/components/Reveal";
 
 export default function KPIs() {
   const cards = [
@@ -45,38 +46,44 @@ export default function KPIs() {
   ];
 
   return (
-    <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:mb-8 xl:grid-cols-4">
-      {cards.map((card) => (
-        <div
+    <div className="reveal-stagger mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:mb-8 xl:grid-cols-4">
+      {cards.map((card, i) => (
+        <Reveal
           key={card.title}
-          className={`relative overflow-hidden rounded-2xl border bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:p-5 ${
-            card.highlight
-              ? "border-emerald-300 ring-2 ring-emerald-100 sm:col-span-2 xl:col-span-1"
-              : "border-slate-200/80"
-          }`}
+          variant="scale"
+          delayMs={i * 90}
+          className={card.highlight ? "sm:col-span-2 xl:col-span-1" : undefined}
         >
-          {card.highlight && (
-            <span className="absolute right-3 top-3 rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
-              Clave
-            </span>
-          )}
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-                {card.title}
-              </p>
-              <p
-                className={`mt-2 break-words text-xl font-bold leading-tight sm:text-2xl ${card.valueClass}`}
-              >
-                {card.value}
-              </p>
-              <p className="mt-1.5 text-xs text-slate-400">{card.sub}</p>
-            </div>
-            <div className={`shrink-0 rounded-xl border p-2.5 ${card.accent}`}>
-              <card.icon className="h-5 w-5" />
+          <div
+            className={`relative h-full overflow-hidden rounded-2xl border bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md sm:p-5 ${
+              card.highlight
+                ? "border-emerald-300 ring-2 ring-emerald-100"
+                : "border-slate-200/80"
+            }`}
+          >
+            {card.highlight && (
+              <span className="absolute right-3 top-3 rounded-full bg-emerald-600 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+                Clave
+              </span>
+            )}
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0 flex-1">
+                <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                  {card.title}
+                </p>
+                <p
+                  className={`mt-2 break-words text-xl font-bold leading-tight sm:text-2xl ${card.valueClass}`}
+                >
+                  {card.value}
+                </p>
+                <p className="mt-1.5 text-xs text-slate-400">{card.sub}</p>
+              </div>
+              <div className={`shrink-0 rounded-xl border p-2.5 ${card.accent}`}>
+                <card.icon className="h-5 w-5" />
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       ))}
     </div>
   );

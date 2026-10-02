@@ -20,9 +20,9 @@ export default function Home() {
 
         <footer className="border-t border-slate-200/80 py-6 text-center text-xs text-slate-400">
           <p className="font-medium text-slate-600">
-            Alcaldía Municipal de San Pedro Sula · Droguería Medifutur
+            Secretaría de Salud · Droguería Medifuturo
           </p>
-          <p className="mt-1 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-1 mx-auto max-w-xl leading-relaxed">
             Catálogo oficial de precios para el Fondo de Contingencia — precios
             fijos y transparentes para auditoría del Estado · Mayo 2026 · Red
             SESAL e IHSS
