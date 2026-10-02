@@ -116,6 +116,19 @@ html {
   }
 }
 
+/* Logos: un poco más visible, sigue discreto */
+@keyframes logo-breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.06));
+  }
+  50% {
+    transform: translateY(-7px) scale(1.025);
+    filter: drop-shadow(0 10px 14px rgba(15, 23, 42, 0.12));
+  }
+}
+
 @keyframes soft-pulse-ring {
   0%,
   100% {
@@ -143,6 +156,11 @@ html {
 
 .animate-soft-float {
   animation: soft-float 3.6s ease-in-out infinite;
+}
+
+.animate-logo-breathe {
+  animation: logo-breathe 4.2s ease-in-out infinite;
+  will-change: transform, filter;
 }
 
 .animate-soft-pulse-ring {
@@ -279,6 +297,7 @@ body.presentation-active .present-spotlight > * {
 
   .animate-savings-glow,
   .animate-soft-float,
+  .animate-logo-breathe,
   .animate-soft-pulse-ring,
   .animate-shimmer-bar,
   .present-intro-card,

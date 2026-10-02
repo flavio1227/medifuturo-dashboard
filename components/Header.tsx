@@ -13,12 +13,12 @@ export default function Header() {
         </p>
 
         {/* Misma caja: logos ocupan más del área interna */}
-        <div className="flex h-[8.5rem] items-center justify-center gap-3 overflow-hidden sm:h-36 sm:gap-6 md:h-40 md:gap-8">
+        <div className="flex h-[8.5rem] items-center justify-center gap-3 overflow-visible sm:h-36 sm:gap-6 md:h-40 md:gap-8">
           <div className="flex h-full min-w-0 flex-1 items-center justify-center">
             <img
               src={withBasePath("/logos/secretaria-de-salud.png")}
               alt="Gobierno de la República · Secretaría de Salud"
-              className="animate-soft-float h-full w-auto max-w-full object-contain"
+              className="animate-logo-breathe h-[92%] w-auto max-w-full object-contain"
               width={300}
               height={300}
               decoding="async"
@@ -34,8 +34,8 @@ export default function Header() {
             <img
               src={`${withBasePath("/logos/medifuturo-logo.jpeg")}?v=crop3`}
               alt="Droguería Medifuturo"
-              className="animate-soft-float h-full w-auto max-w-full object-contain"
-              style={{ animationDelay: "0.45s" }}
+              className="animate-logo-breathe h-[92%] w-auto max-w-full object-contain"
+              style={{ animationDelay: "0.55s" }}
               width={320}
               height={180}
               decoding="async"
